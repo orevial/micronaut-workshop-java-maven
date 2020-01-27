@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rental-registry</artifactId>
+
+    <parent>
+        <groupId>com.stacklabs.micronaut.workshop</groupId>
+        <artifactId>micronaut-workshop-java-maven</artifactId>
+        <version>${workshop.version}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <exec.mainClass>com.stacklabs.micronaut.workshop.registry.Application</exec.mainClass>
+        <maven.exec.skip>${skip.registry.run}</maven.exec.skip>
+        <skip.registry.run>true</skip.registry.run>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.stacklabs.micronaut.workshop</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micronaut.configuration</groupId>
+            <artifactId>micronaut-mongo-reactive</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

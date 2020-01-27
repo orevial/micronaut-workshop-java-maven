@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: rental.registry
+---
+testFramework: junit
+sourceLanguage: java

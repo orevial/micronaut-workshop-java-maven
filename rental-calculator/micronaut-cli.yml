@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: rental.calculator
+---
+testFramework: junit
+sourceLanguage: java
