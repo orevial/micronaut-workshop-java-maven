@@ -1,5 +1,6 @@
 package com.stacklabs.micronaut.workshop.agency;
 
+import com.stacklabs.micronaut.workshop.agency.aop.Logged;
 import com.stacklabs.micronaut.workshop.agency.domain.Car;
 import com.stacklabs.micronaut.workshop.agency.persistence.CarRepository;
 import io.micronaut.http.HttpRequest;
@@ -27,6 +28,7 @@ public class CarsController {
         this.repository = repository;
     }
 
+    @Logged
     @Get("/{?registration}")
     public List<Car> findAll(@QueryValue("registration") Optional<String> registration) {
         return registration
@@ -36,12 +38,14 @@ public class CarsController {
                 .orElseGet(() -> repository.findAll());
     }
 
+    @Logged
     @Get("/{id}")
     public Optional<Car> findById(@PathVariable UUID id) {
         return repository.findById(id);
     }
 
 
+    @Logged
     @Post("/")
     @Status(HttpStatus.CREATED)
     public Car add(@Body Car car) {
@@ -49,12 +53,14 @@ public class CarsController {
                 .orElseThrow(() -> new RuntimeException("Unable to retrieve saved car..."));
     }
 
+    @Logged
     @Delete("/{id}")
     @Status(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable UUID id) {
         repository.deleteById(id);
     }
 
+    @Logged
     @Put("/{id}")
     Optional<Car> update(@PathVariable UUID id, @Body Car car) {
         return repository.update(id, car);
